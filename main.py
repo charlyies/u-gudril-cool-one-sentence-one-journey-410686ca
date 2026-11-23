@@ -23,6 +23,11 @@ STORY = (
 
 
 def main() -> None:
+    # Self-check against the competition gate before writing: exactly one
+    # sentence, 1-300 characters, not only whitespace.
+    assert 1 <= len(STORY) <= 300, len(STORY)
+    assert STORY.count(".") == 1, "entry must be exactly one sentence"
+    assert STORY.strip(), "entry must not be only whitespace"
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "w", encoding="utf-8") as f:
         f.write(STORY)
